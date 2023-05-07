@@ -6,21 +6,21 @@
 
 // function App() {
 // 	const [barcode, setbarcode] = useState('');
-// 	const [qty, setqty] = useState('');
+//   const [qty, setqty] = useState('');
 
-// 	const handleSubmit = (e) => {
-// 		e.preventDefault();
-
-// 		const objt = { barcode, qty,};
-
-// 		axios
-// 			.post(
-// 				'https://sheet.best/api/sheets/8d00d980-c73b-476a-a0a5-ef6835f9849a',
-// 				objt
-// 			)
-// 			.then((response) => {
-// 				console.log(response);
-// 			});
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const objt = { barcode, qty };
+//     axios
+//       .post(
+//         'https://sheet.best/api/sheets/8d00d980-c73b-476a-a0a5-ef6835f9849a',
+//         objt
+//       )
+//       .then((response) => {
+//         console.log(response);
+//         setbarcode('');
+//         setqty('');
+//       });
 // 	};
 
 // 	return (
@@ -31,14 +31,16 @@
 // 					<label>Barcode</label>
 // 					<input
 // 						placeholder="Enter Barcode"
-// 						onChange={(e) => setbarcode(e.target.value)}
+// 						value={barcode}
+//             onChange={(e) => setbarcode(e.target.value)}
 // 					/>
 // 				</Form.Field>
 // 				<Form.Field>
 // 					<label>Qty</label>
 // 					<input
 // 						placeholder="Enter Qty"
-// 						onChange={(e) => setqty(e.target.value)}
+// 						value={qty}
+//             onChange={(e) => setqty(e.target.value)}
 // 					/>
 // 				</Form.Field>
 
