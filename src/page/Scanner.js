@@ -10,11 +10,6 @@ function BarcodeScanner() {
           name: "Live",
           type: "LiveStream",
           target: document.querySelector("#scanner-container"),
-          constraints: {
-            width: 300,
-            height: 300,
-            facingMode: "environment", // Use the rear camera (if available)
-          },
         },
         decoder: {
           readers: ["ean_reader"],
@@ -43,7 +38,7 @@ function BarcodeScanner() {
   return (
     
             <div>
-            <div id="scanner-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}/>
+            <div id="scanner-container"/>
             <p>Scanned Barcode: {scannedBarcode}</p>
           </div>
   );
