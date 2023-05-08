@@ -30,8 +30,8 @@ export default function EnterCode() {
 			  type: "LiveStream",
 			  target: document.querySelector("#scanner-container"),
 			  constraints: {
-				width: 300,
-				height: 200,
+				width: 500,
+				height: 500,
 				facingMode: "environment",
 			  },
 			},
