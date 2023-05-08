@@ -1,75 +1,52 @@
-// import React, { Component } from 'react'
-// import Quagga from 'quagga'
+import React, { useState, useEffect } from "react";
+import Quagga from "quagga";
+function BarcodeScanner() {
+  const [scannedBarcode, setScannedBarcode] = useState("");
 
-// class Scanner extends Component {
-//   componentDidMount() {
-//     Quagga.init(
-//       {
-//         inputStream: {
-//           type: 'LiveStream',
-//           constraints: {
-//             width: 640,
-//             height: 320,
-//             facingMode: 'environment',
-//           },
-//         //   area: { // defines rectangle of the detection/localization area
-//         //     top: "10%",    // top offset
-//         //     right: "10%",  // right offset
-//         //     left: "10%",   // left offset
-//         //     bottom: "10%"  // bottom offset
-//         //   },
-//         },
-//         locator: {
-//             halfSample: true,
-//             patchSize: "large", // x-small, small, medium, large, x-large
-//             debug: {
-//                 showCanvas: true,
-//                 showPatches: false,
-//                 showFoundPatches: false,
-//                 showSkeleton: false,
-//                 showLabels: false,
-//                 showPatchLabels: false,
-//                 showRemainingPatchLabels: false,
-//                 boxFromPatches: {
-//                     showTransformed: true,
-//                     showTransformedBox: true,
-//                     showBB: true
-//               }
-//             }
-//         },
-//         numOfWorkers: 4,
-//         decoder: {
-//             readers: ['code_128_reader'],
-//             debug: {
-//                 drawBoundingBox: true,
-//                 showFrequency: true,
-//                 drawScanline: true,
-//                 showPattern: true
-//             },
-//         },
-//         locate: true,
-//       },
-//       function(err) {
-//         if (err) {
-//           return console.log(err)
-//         }
-//         Quagga.start()
-//       },
-//     )
-//     Quagga.onDetected(this._onDetected)
-//   }
+  useEffect(() => {
+    Quagga.init(
+      {
+        inputStream: {
+          name: "Live",
+          type: "LiveStream",
+          target: document.querySelector("#scanner-container"),
+          constraints: {
+            width: 300,
+            height: 300,
+            facingMode: "environment", // Use the rear camera (if available)
+          },
+        },
+        decoder: {
+          readers: ["ean_reader"],
+        },
+      },
+      (err) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        Quagga.start();
+      }
+    );
 
-//   componentWillUnmount() {
-//     Quagga.offDetected(this._onDetected)
-//   }
+    Quagga.onDetected((data) => {
+      setScannedBarcode(data.codeResult.code);
+      Quagga.stop();
+    });
 
-//   _onDetected = result => {
-//     this.props.onDetected(result)
-//   }
+    return () => {
+      Quagga.offDetected();
+      Quagga.stop();
+    };
+  }, []);
 
-//   render() {
-//     return <div id="interactive" className="viewport"/>
-//     }
-// }
+  return (
+    
+            <div>
+            <div id="scanner-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}/>
+            <p>Scanned Barcode: {scannedBarcode}</p>
+          </div>
+  );
+}
 
-// export default Scanner
+export default BarcodeScanner;
