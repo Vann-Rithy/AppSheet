@@ -28,6 +28,12 @@ export default function EnterCode() {
 			  name: "Live",
 			  type: "LiveStream",
 			  target: document.querySelector("#scanner-container"),
+			  constraints: {
+				width: { min: 640 },
+				height: { min: 480 },
+				aspectRatio: { min: 1, max: 100 },
+				facingMode: "environment", // or "user" for front camera
+			  },
 			},
 			decoder: {
 			  readers: ["ean_reader"],
@@ -41,19 +47,19 @@ export default function EnterCode() {
 			Quagga.start();
 		  }
 		);
-	
+	  
 		Quagga.onDetected((data) => {
-			setbarcode(data.codeResult.code);
+		  setbarcode(data.codeResult.code);
 		  Quagga.stop();
 		});
 	  };
-	
+	  
 	  useEffect(() => {
 		return () => {
 		  Quagga.offDetected();
 		  Quagga.stop();
 		};
-	  }, []);
+	  }, []);	  
 
 	return (
 		<Container fluid className="container">
