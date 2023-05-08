@@ -29,10 +29,10 @@ export default function EnterCode() {
 			  type: "LiveStream",
 			  target: document.querySelector("#scanner-container"),
 			  constraints: {
-				width: { min: 500 },
-				height: { min: 500 },
+				width: 600,
+				height: 400,
 				aspectRatio: { min: 1, max: 100 },
-				facingMode: "environment", // or "user" for front camera
+				facingMode: "environment",
 			  },
 			},
 			decoder: {
