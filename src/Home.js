@@ -28,12 +28,6 @@ export default function EnterCode() {
 			  name: "Live",
 			  type: "LiveStream",
 			  target: document.querySelector("#scanner-container"),
-			  constraints: {
-				width: 600,
-				height: 400,
-				aspectRatio: { min: 1, max: 100 },
-				facingMode: "environment",
-			  },
 			},
 			decoder: {
 			  readers: ["ean_reader"],
@@ -64,7 +58,7 @@ export default function EnterCode() {
 	return (
 		<Container fluid className="container">
 			<Header as="h2">React google sheet</Header>
-            <div id="scanner-container" style={{width:'600',height:'400'}}/>
+            <div id="scanner-container"/>
 			<Button  onClick={startScanner}>
         Scanner
       </Button>
