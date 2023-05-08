@@ -29,6 +29,11 @@ export default function EnterCode() {
 			  name: "Live",
 			  type: "LiveStream",
 			  target: document.querySelector("#scanner-container"),
+			  constraints: {
+				width: 600,
+				height: 400,
+				facingMode: "environment",
+			  },
 			},
 			decoder: {
 			  readers: ["ean_reader"],
