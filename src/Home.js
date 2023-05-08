@@ -63,7 +63,7 @@ export default function EnterCode() {
 
 	return (
 		<Container fluid className="container">
-			<Header as="h2">React google sheet</Header>
+			<Header as="h2">Rabbit Mart</Header>
             <div id="scanner-container"/>
 			<Button  onClick={startScanner}>
         Scanner
