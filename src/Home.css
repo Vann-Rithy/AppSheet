@@ -1,3 +1,6 @@
 #scanner-container{
     background-color: brown;
+    width: 600px;
+    height: 500px;
+    float: left;
 }
