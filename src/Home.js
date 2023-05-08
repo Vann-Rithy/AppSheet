@@ -69,6 +69,7 @@ export default function EnterCode() {
 					<label>Barcode</label>
 					<input
 						placeholder="Enter Barcode"
+						type="number"
 						value={barcode}
             onChange={(e) => setbarcode(e.target.value)}
 					/>
