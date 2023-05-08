@@ -21,7 +21,7 @@ export default function EnterCode() {
         setqty('');
       });
 	};
-	useEffect(() => {
+	const startScanner = () => {
 		Quagga.init(
 		  {
 			inputStream: {
@@ -46,7 +46,9 @@ export default function EnterCode() {
 			setbarcode(data.codeResult.code);
 		  Quagga.stop();
 		});
+	  };
 	
+	  useEffect(() => {
 		return () => {
 		  Quagga.offDetected();
 		  Quagga.stop();
@@ -59,7 +61,7 @@ export default function EnterCode() {
 			<div>
             <div id="scanner-container"/>
           </div>
-			<Button>
+			<Button  onClick={startScanner}>
         Scanner
       </Button>
 			<Form className="form">
