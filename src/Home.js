@@ -75,6 +75,7 @@ export default function EnterCode() {
 					<label>Qty</label>
 					<input
 						placeholder="Enter Qty"
+						type="number"
 						value={qty}
             onChange={(e) => setqty(e.target.value)}
 					/>
