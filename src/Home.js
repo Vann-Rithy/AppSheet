@@ -3,6 +3,7 @@ import Quagga from "quagga";
 import { Button, Form, Container, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css'
 import axios from 'axios';
+import './Home.css'
 export default function EnterCode() {
 	const [barcode, setbarcode] = useState('');
   const [qty, setqty] = useState('');
